@@ -5,7 +5,10 @@
 }
 
 body{
-    background:#050816;
+    background:
+    radial-gradient(circle at top left, rgba(37,99,235,.35), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(59,130,246,.25), transparent 30%),
+    linear-gradient(180deg,#020617 0%,#050816 50%,#020617 100%);
     color:#ffffff;
     font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
     overflow-x:hidden;
@@ -27,8 +30,22 @@ body{
 
 .hero{
     padding-top:140px;
-    padding-bottom:100px;
+    padding-bottom:120px;
     text-align:center;
+    position:relative;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    width:500px;
+    height:500px;
+    background:rgba(37,99,235,.15);
+    filter:blur(120px);
+    top:-100px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:-1;
 }
 
 .logo{
@@ -50,13 +67,15 @@ body{
 /* Profile */
 
 .profile-img{
-    width:260px;
-    height:260px;
+    width:280px;
+    height:280px;
     object-fit:cover;
     border-radius:50%;
     border:5px solid #2563eb;
     margin:30px 0;
-    box-shadow:0 0 30px rgba(37,99,235,.4);
+    box-shadow:
+    0 0 30px rgba(37,99,235,.5),
+    0 0 60px rgba(37,99,235,.3);
 }
 
 /* Sections */
