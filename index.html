@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,18 +9,28 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <link rel="stylesheet" href="css/style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<style>
+html{
+scroll-behavior:smooth;
+}
+</style>
+
 </head>
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">
 <div class="container">
 
-<a class="navbar-brand fw-bold" href="#">
+<a class="navbar-brand fw-bold text-primary" href="#">
 DarkByte
 </a>
 
-<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
 <span class="navbar-toggler-icon"></span>
 </button>
 
@@ -37,7 +47,15 @@ DarkByte
 </li>
 
 <li class="nav-item">
+<a class="nav-link" href="#services">Services</a>
+</li>
+
+<li class="nav-item">
 <a class="nav-link" href="#certificates">Certificates</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="#portfolio">Portfolio</a>
 </li>
 
 <li class="nav-item">
@@ -53,23 +71,31 @@ DarkByte
 
 <section class="hero">
 
-<div class="container">
+<div class="container text-center">
 
-<img src="images/logo.png" class="logo">
+<img src="photo1.jpeg" class="logo" alt="DarkByte Logo">
 
-<h1>DarkByte</h1>
+<h1 class="display-3 fw-bold mt-3">
+DarkByte
+</h1>
 
-<p>
+<p class="lead">
 Code. Build. Evolve.
 </p>
 
-<img src="images/basem.jpg" class="profile-img">
+<img src="photo5.jpeg" class="profile-img" alt="Basem Taha">
 
-<h2>Basem Taha</h2>
+<h2 class="fw-bold">
+Basem Taha
+</h2>
 
-<p>
+<p class="lead">
 Python & Django Web Developer
 </p>
+
+<a href="#contact" class="btn btn-primary btn-lg mt-3">
+Contact Me
+</a>
 
 </div>
 
@@ -77,44 +103,106 @@ Python & Django Web Developer
 
 <section id="about" class="container py-5">
 
-<h2 class="section-title">About Me</h2>
+<h2 class="section-title text-center">
+About Me
+</h2>
 
-<p>
-I'm Basem Taha, a passionate Web Developer specializing in Python and Django.
-Founder of DarkByte.
-My goal is to build modern, secure and scalable web applications and later transform DarkByte into a complete educational platform.
+<div class="row justify-content-center">
+
+<div class="col-lg-8">
+
+<p class="text-center fs-5">
+Hello, I'm <strong>Basem Taha</strong>, Founder of <strong>DarkByte</strong>.
+
+I specialize in Python and Django web development and enjoy building modern, secure and scalable web applications.
+
+DarkByte started as a software development brand and will grow into a complete educational platform for programming and technology.
 </p>
+
+</div>
+
+</div>
 
 </section>
 
 <section id="skills" class="container py-5">
 
-<h2 class="section-title">Skills</h2>
+<h2 class="section-title text-center">
+Skills
+</h2>
 
 <div class="row">
 
-<div class="col-md-3">
+<div class="col-md-4">
 <div class="skill-card">Python</div>
 </div>
 
-<div class="col-md-3">
+<div class="col-md-4">
 <div class="skill-card">Django</div>
 </div>
 
-<div class="col-md-3">
+<div class="col-md-4">
 <div class="skill-card">HTML5</div>
 </div>
 
-<div class="col-md-3">
+<div class="col-md-4">
 <div class="skill-card">CSS3</div>
 </div>
 
-<div class="col-md-3">
-<div class="skill-card">Bootstrap</div>
+<div class="col-md-4">
+<div class="skill-card">Bootstrap 5</div>
 </div>
 
-<div class="col-md-3">
-<div class="skill-card">GitHub</div>
+<div class="col-md-4">
+<div class="skill-card">Git & GitHub</div>
+</div>
+
+</div>
+
+</section>
+
+<section id="services" class="container py-5">
+
+<h2 class="section-title text-center">
+Services
+</h2>
+
+<div class="row">
+
+<div class="col-md-4">
+<div class="skill-card">
+Web Development
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="skill-card">
+Custom Web Applications
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="skill-card">
+Database Design
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="skill-card">
+API Development
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="skill-card">
+Technical Consulting
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="skill-card">
+Website Maintenance
+</div>
 </div>
 
 </div>
@@ -123,21 +211,46 @@ My goal is to build modern, secure and scalable web applications and later trans
 
 <section id="certificates" class="container py-5">
 
-<h2 class="section-title">Certificates</h2>
+<h2 class="section-title text-center">
+Certificates
+</h2>
 
 <div class="row">
 
 <div class="col-md-4">
-<img src="images/cert-python.jpg" class="cert-img">
+<img src="photo2.jpeg" class="cert-img" alt="Python Certificate">
+<h5 class="text-center mt-3">Python Essentials</h5>
 </div>
 
 <div class="col-md-4">
-<img src="images/cert-html-css.jpg" class="cert-img">
+<img src="photo4.jpeg" class="cert-img" alt="HTML CSS Certificate">
+<h5 class="text-center mt-3">HTML & CSS Mastery</h5>
 </div>
 
 <div class="col-md-4">
-<img src="images/cert-django.jpg" class="cert-img">
+<img src="photo3.jpeg" class="cert-img" alt="Django Certificate">
+<h5 class="text-center mt-3">Django Web Development</h5>
 </div>
+
+</div>
+
+</section>
+
+<section id="portfolio" class="container py-5">
+
+<h2 class="section-title text-center">
+Portfolio
+</h2>
+
+<div class="text-center">
+
+<div class="skill-card">
+Projects Coming Soon
+</div>
+
+<p class="mt-4">
+New web applications and client projects will be showcased here.
+</p>
 
 </div>
 
@@ -145,30 +258,48 @@ My goal is to build modern, secure and scalable web applications and later trans
 
 <section id="contact" class="container py-5">
 
-<h2 class="section-title">Contact</h2>
+<h2 class="section-title text-center">
+Contact
+</h2>
 
-<p>Email: bt3762334@gmail.com</p>
-
-<p>Phone: 01091291823</p>
+<div class="text-center">
 
 <p>
-<a href="https://www.facebook.com/share/18pZev7U1B/" target="_blank">
+📧 Email:
+<strong>
+bt3762334@gmail.com
+</strong>
+</p>
+
+<p>
+📞 Phone:
+<strong>
+01091291823
+</strong>
+</p>
+
+<a
+href="https://www.facebook.com/share/18pZev7U1B/"
+target="_blank"
+class="btn btn-primary m-2">
 Facebook
 </a>
-</p>
 
-<p>
-<a href="https://www.instagram.com/basemtaha28" target="_blank">
+<a
+href="https://www.instagram.com/basemtaha28"
+target="_blank"
+class="btn btn-outline-light m-2">
 Instagram
 </a>
-</p>
+
+</div>
 
 </section>
 
-<footer>
+<footer class="bg-black text-center py-4">
 
-<p>
-© 2026 DarkByte - Basem Taha
+<p class="mb-0">
+© 2026 DarkByte | Founded by Basem Taha
 </p>
 
 </footer>
