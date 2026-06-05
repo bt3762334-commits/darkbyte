@@ -1,1 +1,2 @@
-console.log("DarkByte Loaded");
+
+console.log("DarkByte Loaded Successfully");
