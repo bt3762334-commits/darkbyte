@@ -1,58 +1,44 @@
-/* ==========================
-   D3 Animated Background
-========================== */
-
-function createBackground() {
-
-document.getElementById("background").innerHTML = "";
+/* ==================================
+   D3 Animated Network Background
+================================== */
 
 const width = window.innerWidth;
-const height = document.body.scrollHeight;
+const height = window.innerHeight;
 
 const svg = d3.select("#background")
 .append("svg")
 .attr("width", width)
 .attr("height", height);
 
-const nodes = d3.range(100).map(() => ({
+const nodes = d3.range(90).map(() => ({
 x: Math.random() * width,
 y: Math.random() * height,
-vx: (Math.random() - 0.5) * 0.4,
-vy: (Math.random() - 0.5) * 0.4
+vx: (Math.random() - 0.5) * 0.5,
+vy: (Math.random() - 0.5) * 0.5
 }));
 
-const linesGroup = svg.append("g");
-const circlesGroup = svg.append("g");
+function drawBackground(){
 
-const circles = circlesGroup
-.selectAll("circle")
-.data(nodes)
-.enter()
-.append("circle")
-.attr("r", 2.5)
-.attr("fill", "#3b82f6");
+svg.selectAll("*").remove();
 
-function drawLines(){
+for(let i = 0; i < nodes.length; i++){
 
-const lines = [];
-
-for(let i=0;i<nodes.length;i++){
-
-for(let j=i+1;j<nodes.length;j++){
+for(let j = i + 1; j < nodes.length; j++){
 
 const dx = nodes[i].x - nodes[j].x;
 const dy = nodes[i].y - nodes[j].y;
 
-const distance = Math.sqrt(dx*dx + dy*dy);
+const distance = Math.sqrt(dx * dx + dy * dy);
 
 if(distance < 130){
 
-lines.push({
-x1:nodes[i].x,
-y1:nodes[i].y,
-x2:nodes[j].x,
-y2:nodes[j].y
-});
+svg.append("line")
+.attr("x1", nodes[i].x)
+.attr("y1", nodes[i].y)
+.attr("x2", nodes[j].x)
+.attr("y2", nodes[j].y)
+.style("stroke", "#3b82f6")
+.style("stroke-opacity", 0.15);
 
 }
 
@@ -60,78 +46,68 @@ y2:nodes[j].y
 
 }
 
-const link = linesGroup
-.selectAll("line")
-.data(lines);
-
-link.enter()
-.append("line")
-.merge(link)
-.attr("x1", d => d.x1)
-.attr("y1", d => d.y1)
-.attr("x2", d => d.x2)
-.attr("y2", d => d.y2)
-.attr("stroke", "#2563eb")
-.attr("stroke-opacity", 0.12);
-
-link.exit().remove();
+svg.selectAll("circle")
+.data(nodes)
+.enter()
+.append("circle")
+.attr("cx", d => d.x)
+.attr("cy", d => d.y)
+.attr("r", 2)
+.style("fill", "#60a5fa");
 
 }
 
-function animate(){
+function animateBackground(){
 
 nodes.forEach(node => {
 
 node.x += node.vx;
 node.y += node.vy;
 
-if(node.x <= 0 || node.x >= width)
+if(node.x < 0 || node.x > width){
 node.vx *= -1;
+}
 
-if(node.y <= 0 || node.y >= height)
+if(node.y < 0 || node.y > height){
 node.vy *= -1;
+}
 
 });
 
-circles
-.attr("cx", d => d.x)
-.attr("cy", d => d.y);
+drawBackground();
 
-drawLines();
-
-requestAnimationFrame(animate);
+requestAnimationFrame(animateBackground);
 
 }
 
-animate();
+drawBackground();
+animateBackground();
 
-}
-
-createBackground();
-
-window.addEventListener("resize", createBackground);
-
-/* ==========================
-   Animated Counters
-========================== */
+/* ==================================
+   Statistics Counter
+================================== */
 
 const counters = document.querySelectorAll(".counter");
 
+const startCounters = () => {
+
 counters.forEach(counter => {
 
-const updateCounter = () => {
+const target = +counter.getAttribute("data-target");
 
-const target = +counter.dataset.target;
-const count = +counter.innerText;
+let current = 0;
 
 const increment = target / 80;
 
-if(count < target){
+const updateCounter = () => {
 
-counter.innerText =
-Math.ceil(count + increment);
+if(current < target){
 
-setTimeout(updateCounter,20);
+current += increment;
+
+counter.innerText = Math.ceil(current);
+
+requestAnimationFrame(updateCounter);
 
 }else{
 
@@ -145,24 +121,42 @@ updateCounter();
 
 });
 
-/* ==========================
-   Certificate Popup
-========================== */
+};
 
-const certImages =
-document.querySelectorAll(".cert-img");
+const statsSection = document.querySelector("#stats");
 
-const popup =
-document.createElement("div");
+let statsStarted = false;
 
-popup.id = "imagePopup";
+window.addEventListener("scroll", () => {
 
-popup.innerHTML = `
-<div class="popup-content">
-<span class="close-popup">&times;</span>
-<img id="popupImage">
-</div>
-`;
+if(!statsStarted){
+
+const position = statsSection.getBoundingClientRect().top;
+
+if(position < window.innerHeight - 100){
+
+startCounters();
+
+statsStarted = true;
+
+}
+
+}
+
+});
+
+/* ==================================
+   Certificate Popup Viewer
+================================== */
+
+const certImages = document.querySelectorAll(".cert-img");
+
+const popup = document.createElement("div");
+popup.classList.add("popup");
+
+const popupImage = document.createElement("img");
+
+popup.appendChild(popupImage);
 
 document.body.appendChild(popup);
 
@@ -170,43 +164,65 @@ certImages.forEach(img => {
 
 img.addEventListener("click", () => {
 
-document
-.getElementById("popupImage")
-.src = img.src;
+popupImage.src = img.src;
 
-popup.style.display = "flex";
+popup.classList.add("active");
 
 });
 
 });
 
-document
-.querySelector(".close-popup")
-.addEventListener("click", () => {
+popup.addEventListener("click", () => {
 
-popup.style.display = "none";
+popup.classList.remove("active");
 
 });
 
-popup.addEventListener("click", e => {
+/* ==================================
+   Scroll Reveal Animation
+================================== */
 
-if(e.target === popup){
+const revealElements = document.querySelectorAll(
+".skill-card, .service-card, .project-card, .certificate-card, .about-card, .contact-box, .stats-card"
+);
 
-popup.style.display = "none";
+const revealOnScroll = () => {
+
+revealElements.forEach(el => {
+
+const windowHeight = window.innerHeight;
+
+const elementTop = el.getBoundingClientRect().top;
+
+if(elementTop < windowHeight - 100){
+
+el.style.opacity = "1";
+el.style.transform = "translateY(0)";
 
 }
 
 });
 
-/* ==========================
+};
+
+revealElements.forEach(el => {
+
+el.style.opacity = "0";
+el.style.transform = "translateY(40px)";
+el.style.transition = "all .7s ease";
+
+});
+
+window.addEventListener("scroll", revealOnScroll);
+
+revealOnScroll();
+
+/* ==================================
    Navbar Active Link
-========================== */
+================================== */
 
-const sections =
-document.querySelectorAll("section");
-
-const navLinks =
-document.querySelectorAll(".nav-link");
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".nav-link");
 
 window.addEventListener("scroll", () => {
 
@@ -214,8 +230,7 @@ let current = "";
 
 sections.forEach(section => {
 
-const sectionTop =
-section.offsetTop - 150;
+const sectionTop = section.offsetTop - 150;
 
 if(pageYOffset >= sectionTop){
 
@@ -229,10 +244,7 @@ navLinks.forEach(link => {
 
 link.classList.remove("active");
 
-if(
-link.getAttribute("href")
-=== "#" + current
-){
+if(link.getAttribute("href") === "#" + current){
 
 link.classList.add("active");
 
@@ -242,38 +254,12 @@ link.classList.add("active");
 
 });
 
-/* ==========================
-   Scroll Reveal
-========================== */
+/* ==================================
+   Smooth Page Load
+================================== */
 
-const revealElements =
-document.querySelectorAll(
-".skill-card,.about-card,.contact-box"
-);
+window.addEventListener("load", () => {
 
-const revealOnScroll = () => {
-
-revealElements.forEach(el => {
-
-const windowHeight =
-window.innerHeight;
-
-const revealTop =
-el.getBoundingClientRect().top;
-
-if(revealTop < windowHeight - 100){
-
-el.classList.add("show");
-
-}
+document.body.style.opacity = "1";
 
 });
-
-};
-
-window.addEventListener(
-"scroll",
-revealOnScroll
-);
-
-revealOnScroll();
