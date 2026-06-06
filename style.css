@@ -366,3 +366,83 @@ svg{
     margin:auto;
     line-height:1.9;
 }
+.contact-subtitle{
+    color:#94a3b8;
+    margin-top:-20px;
+    margin-bottom:40px;
+    font-size:1.1rem;
+}
+
+.contact-box{
+    max-width:700px;
+    margin:auto;
+    background:rgba(15,23,42,.9);
+    border:1px solid rgba(59,130,246,.2);
+    border-radius:25px;
+    padding:45px;
+    backdrop-filter:blur(12px);
+    box-shadow:0 0 30px rgba(37,99,235,.15);
+}
+
+.contact-item{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:20px;
+    margin-bottom:30px;
+    text-align:left;
+}
+
+.contact-icon{
+    font-size:2rem;
+}
+
+.contact-item h5{
+    margin-bottom:5px;
+    color:#60a5fa;
+}
+
+.contact-item p{
+    margin:0;
+}
+
+.contact-item a{
+    color:#ffffff;
+    text-decoration:none;
+}
+
+.contact-item a:hover{
+    color:#60a5fa;
+}
+
+.social-buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    margin-top:25px;
+    flex-wrap:wrap;
+}
+
+.social-buttons .btn{
+    min-width:180px;
+}
+
+@media(max-width:768px){
+
+.contact-item{
+    flex-direction:column;
+    text-align:center;
+    gap:10px;
+}
+
+.contact-box{
+    padding:30px;
+}
+
+}
+.project-text{
+    max-width:450px;
+    margin:20px auto;
+    line-height:1.8;
+    color:#cbd5e1;
+}
