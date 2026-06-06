@@ -286,3 +286,83 @@ svg{
     width:100%;
     margin-top:auto;
 }
+.container{
+    max-width:1200px;
+}
+
+#about p,
+#portfolio p{
+    max-width:700px;
+    margin:auto;
+    line-height:2;
+}
+
+#portfolio .skill-card{
+    height:320px;
+    padding:40px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+#portfolio h4{
+    font-size:2rem;
+    margin-bottom:20px;
+    color:#60a5fa;
+}
+
+#portfolio p{
+    color:#cbd5e1;
+    margin-bottom:30px;
+}
+
+#contact{
+    text-align:center;
+}
+
+.contact-box{
+    max-width:700px;
+    margin:auto;
+    padding:50px;
+    background:rgba(15,23,42,.85);
+    border:1px solid rgba(59,130,246,.2);
+    border-radius:25px;
+    backdrop-filter:blur(10px);
+}
+
+.contact-box p{
+    font-size:1.3rem;
+    margin-bottom:20px;
+}
+
+.social-buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-top:25px;
+}
+
+.section-title{
+    margin-bottom:60px;
+}
+
+@media(max-width:768px){
+
+#portfolio .skill-card{
+    height:auto;
+    padding:30px;
+}
+
+.contact-box{
+    padding:30px;
+}
+
+}
+.project-text{
+    max-width:450px;
+    margin:auto;
+    line-height:1.9;
+}
