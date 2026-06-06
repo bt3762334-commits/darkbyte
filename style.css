@@ -4,14 +4,16 @@
     box-sizing:border-box;
 }
 
+:root{
+--primary:#3b82f6;
+--secondary:#60a5fa;
+--dark:#020617;
+--card:#0f172a;
+--text:#e2e8f0;
+}
 body{
-    background:
-    radial-gradient(circle at top left, rgba(37,99,235,.35), transparent 30%),
-    radial-gradient(circle at bottom right, rgba(59,130,246,.25), transparent 30%),
-    linear-gradient(180deg,#020617 0%,#050816 50%,#020617 100%);
-    color:#ffffff;
-    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
-    overflow-x:hidden;
+    background:var(--dark);
+    color:var(--text);
 }
 
 /* Navbar */
@@ -96,13 +98,24 @@ section{
 /* Cards */
 
 .skill-card{
-    background:#0f172a;
-    padding:30px;
-    border-radius:18px;
+    background:rgba(15,23,42,.85);
+    padding:40px 25px;
+    margin:20px 0;
+    border-radius:20px;
     text-align:center;
-    height:100%;
+    font-weight:600;
     border:1px solid rgba(59,130,246,.15);
-    transition:.3s;
+    transition:all .4s ease;
+}
+
+.row{
+    row-gap:20px;
+}
+
+#skills,
+#services{
+    padding-top:120px;
+    padding-bottom:120px;
 }
 
 .skill-card:hover{
@@ -265,6 +278,17 @@ svg{
 #contact{
     border-top:1px solid rgba(255,255,255,.05);
 }
+.section-title{
+    margin-bottom:50px;
+}
+
+#skills,
+#services,
+#certificates,
+#portfolio,
+#contact{
+    border-top:1px solid rgba(255,255,255,.05);
+}
 #portfolio .skill-card{
     height:100%;
     display:flex;
@@ -285,6 +309,37 @@ svg{
 #portfolio .btn{
     width:100%;
     margin-top:auto;
+}
+.container{
+    max-width:1200px;
+}
+
+#about p,
+#portfolio p{
+    max-width:700px;
+    margin:auto;
+    line-height:2;
+}
+
+#portfolio .skill-card{
+    height:320px;
+    padding:40px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+#portfolio h4{
+    font-size:2rem;
+    margin-bottom:20px;
+    color:#60a5fa;
+}
+
+#portfolio p{
+    color:#cbd5e1;
+    margin-bottom:30px;
 }
 .container{
     max-width:1200px;
@@ -445,4 +500,32 @@ svg{
     margin:20px auto;
     line-height:1.8;
     color:#cbd5e1;
+}
+.who-title{
+    text-align:center;
+    color:#60a5fa;
+    margin-bottom:30px;
+    font-size:2rem;
+}
+
+.about-text{
+    max-width:850px;
+    margin:auto;
+    text-align:center;
+    line-height:2.2;
+    font-size:1.15rem;
+    color:#cbd5e1;
+}
+.cert-img{
+    width:100%;
+    height:280px;
+    object-fit:cover;
+    object-position:top;
+    border-radius:20px;
+    transition:.4s;
+}
+
+.cert-img:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 30px rgba(59,130,246,.4);
 }
