@@ -230,3 +230,41 @@ footer{
 svg{
     display:block;
 }
+.about-card{
+    max-width:900px;
+    margin:auto;
+    background:rgba(15,23,42,.85);
+    padding:35px;
+    border-radius:20px;
+    border:1px solid rgba(59,130,246,.2);
+}
+
+.about-card p{
+    line-height:1.9;
+    color:#cbd5e1;
+}
+
+.hero-role{
+    color:#60a5fa;
+    font-size:1.3rem;
+    font-weight:600;
+}
+
+.hero-text{
+    max-width:700px;
+    margin:auto;
+    color:#cbd5e1;
+    line-height:1.8;
+}
+
+.section-title{
+    margin-bottom:50px;
+}
+
+#skills,
+#services,
+#certificates,
+#portfolio,
+#contact{
+    border-top:1px solid rgba(255,255,255,.05);
+}
